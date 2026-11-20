@@ -1,0 +1,844 @@
+
+/* =====================================================
+   ANIMATIONS.CSS
+   GRC_PORTFOLIO — MOTION & INTERACTION EFFECTS
+   Theme: Forest Liquid Glass
+   ===================================================== */
+
+
+/* =====================================================
+   1. ANIMATION VARIABLES
+   ===================================================== */
+
+:root {
+    --animation-fast: 180ms ease;
+    --animation-normal: 300ms ease;
+    --animation-smooth: 500ms cubic-bezier(0.22, 1, 0.36, 1);
+    --animation-slow: 800ms cubic-bezier(0.22, 1, 0.36, 1);
+
+    --hover-lift: -5px;
+    --hover-scale: 1.02;
+}
+
+
+/* =====================================================
+   2. GENERAL PAGE ENTRANCE
+   ===================================================== */
+
+@keyframes page-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in-down {
+    from {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fade-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.page-wrapper {
+    animation: page-fade-in 650ms ease both;
+}
+
+.page-section {
+    animation: fade-in-up 650ms ease both;
+}
+
+.page-header {
+    animation: fade-in-down 600ms ease both;
+}
+
+.page-title {
+    animation: fade-in-up 700ms ease both;
+}
+
+.home-hero {
+    animation: fade-in-up 750ms ease both;
+}
+
+.home-hero-content {
+    animation: fade-in-left 800ms ease both;
+}
+
+.home-hero-decoration {
+    animation: fade-in-right 850ms ease both;
+}
+
+
+/* =====================================================
+   3. STAGGERED CONTENT ANIMATIONS
+   ===================================================== */
+
+.glass-card,
+.stat-card,
+.highlight-card,
+.experience-card,
+.education-card,
+.project-card,
+.skill-category {
+    animation: fade-in-up 600ms ease both;
+}
+
+.glass-card:nth-child(1) {
+    animation-delay: 80ms;
+}
+
+.glass-card:nth-child(2) {
+    animation-delay: 150ms;
+}
+
+.glass-card:nth-child(3) {
+    animation-delay: 220ms;
+}
+
+.glass-card:nth-child(4) {
+    animation-delay: 290ms;
+}
+
+.glass-card:nth-child(5) {
+    animation-delay: 360ms;
+}
+
+.glass-card:nth-child(6) {
+    animation-delay: 430ms;
+}
+
+
+
+/* =====================================================
+   4. FOREST ATMOSPHERE ANIMATIONS
+   ===================================================== */
+
+/* Fog moves farther across the background */
+
+@keyframes forest-fog-drift {
+    0% {
+        transform: translate3d(-3%, 1%, 0) scale(1);
+        opacity: 0.65;
+    }
+
+    50% {
+        transform: translate3d(3%, -1%, 0) scale(1.06);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate3d(-3%, 1%, 0) scale(1);
+        opacity: 0.65;
+    }
+}
+
+/* Moving sunlight */
+
+@keyframes forest-light-shift {
+    0% {
+        background-position:
+            0% 50%,
+            100% 50%,
+            center;
+        opacity: 0.55;
+    }
+
+    50% {
+        background-position:
+            100% 45%,
+            0% 55%,
+            center;
+        opacity: 0.95;
+    }
+
+    100% {
+        background-position:
+            0% 50%,
+            100% 50%,
+            center;
+        opacity: 0.55;
+    }
+}
+
+/* Floating environmental particles */
+
+@keyframes forest-particle-float {
+    0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 0.35;
+    }
+
+    25% {
+        transform: translate3d(9px, -12px, 0);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translate3d(-5px, -22px, 0);
+        opacity: 1;
+    }
+
+    75% {
+        transform: translate3d(-12px, -9px, 0);
+        opacity: 0.65;
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 0.35;
+    }
+}
+
+/* Gentle pine movement for future card scenes */
+
+@keyframes forest-tree-sway {
+    0%, 100% {
+        transform: rotate(-0.6deg);
+    }
+
+    50% {
+        transform: rotate(0.6deg);
+    }
+}
+
+
+
+/* =====================================================
+   FOREST CARD SCENE ANIMATIONS
+   RETIRED — REPLACED BY ANIMATED GRASS
+===================================================== */
+
+/*
+   Forest illustrations are no longer used
+   inside the Home dashboard preview cards.
+
+   Global forest atmosphere animations remain
+   active through body::before and body::after.
+*/
+
+
+
+
+
+/* =====================================================
+   ANIMATED GRASS — NATURAL BLADE MOVEMENT
+===================================================== */
+
+/* Individual blade swaying animation */
+
+@keyframes grass-blade-sway {
+    0%, 100% {
+        transform: rotate(var(--blade-start));
+    }
+
+    50% {
+        transform: rotate(var(--blade-end));
+    }
+}
+
+/* Natural movement for every grass blade */
+
+.grass-card .grass-blade {
+    animation-name: grass-blade-sway;
+    animation-duration: var(--blade-duration);
+    animation-delay: var(--blade-delay);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+    will-change: transform;
+}
+
+/* Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    .grass-card .grass-blade {
+        animation: none !important;
+        transform: rotate(0deg);
+    }
+}
+
+
+
+
+
+/* =====================================================
+   5. GLASS CARD HOVER EFFECTS
+   ===================================================== */
+
+.glass-card,
+.glass-panel {
+    transition:
+        transform var(--animation-normal),
+        box-shadow var(--animation-normal),
+        border-color var(--animation-normal),
+        background-color var(--animation-normal);
+}
+
+.glass-card:hover {
+    transform: translateY(var(--hover-lift));
+}
+
+.glass-panel:hover {
+    border-color: var(--sage-400);
+}
+
+.stat-card:hover,
+.highlight-card:hover,
+.project-card:hover,
+.skill-category:hover {
+    transform: translateY(var(--hover-lift)) scale(var(--hover-scale));
+}
+
+
+/* =====================================================
+   6. BUTTON INTERACTIONS
+   ===================================================== */
+
+.glass-button,
+button {
+    transition:
+        transform var(--animation-fast),
+        background-color var(--animation-fast),
+        color var(--animation-fast),
+        border-color var(--animation-fast),
+        box-shadow var(--animation-fast);
+}
+
+.glass-button:hover {
+    transform: translateY(-3px);
+}
+
+.glass-button:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.glass-button:focus-visible,
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--sage-400);
+    outline-offset: 4px;
+}
+
+
+/* =====================================================
+   7. SIDEBAR ANIMATIONS
+   ===================================================== */
+
+.sidebar {
+    transition:
+        width var(--animation-smooth),
+        transform var(--animation-smooth),
+        background-color var(--animation-normal),
+        border-color var(--animation-normal);
+}
+
+.sidebar-profile,
+.sidebar-profile-info,
+.sidebar-brand-name,
+.sidebar-link-label,
+.sidebar-copyright {
+    transition:
+        opacity var(--animation-normal),
+        transform var(--animation-normal),
+        visibility var(--animation-normal);
+}
+
+.sidebar-link {
+    transition:
+        background-color var(--animation-fast),
+        color var(--animation-fast),
+        transform var(--animation-fast),
+        border-color var(--animation-fast);
+}
+
+.sidebar-link:hover {
+    transform: translateX(4px);
+}
+
+.sidebar-link.active {
+    transition:
+        background-color var(--animation-normal),
+        color var(--animation-normal),
+        border-color var(--animation-normal);
+}
+
+.sidebar-collapse-toggle {
+    transition:
+        transform var(--animation-normal),
+        background-color var(--animation-fast);
+}
+
+.sidebar-collapsed .sidebar-collapse-toggle {
+    transform: rotate(180deg);
+}
+
+
+/* =====================================================
+   8. MOBILE NAVIGATION
+   ===================================================== */
+
+.mobile-header {
+    animation: fade-in-down 500ms ease both;
+}
+
+.mobile-menu-toggle,
+.sidebar-mobile-close {
+    transition:
+        transform var(--animation-fast),
+        background-color var(--animation-fast),
+        color var(--animation-fast);
+}
+
+.mobile-menu-toggle:hover,
+.sidebar-mobile-close:hover {
+    transform: scale(1.08);
+}
+
+.sidebar-overlay {
+    transition:
+        opacity var(--animation-normal),
+        visibility var(--animation-normal);
+}
+
+
+/* =====================================================
+   9. THEME TRANSITIONS
+   ===================================================== */
+
+html {
+    transition:
+        background-color var(--animation-normal),
+        color var(--animation-normal);
+}
+
+body,
+#app,
+.sidebar,
+.main-content-area,
+.glass-card,
+.glass-panel,
+.glass-button,
+.sidebar-link {
+    transition:
+        background-color var(--animation-normal),
+        color var(--animation-normal),
+        border-color var(--animation-normal),
+        box-shadow var(--animation-normal);
+}
+
+.theme-toggle-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--animation-normal);
+}
+
+[data-theme-toggle]:hover .theme-toggle-icon {
+    transform: rotate(20deg);
+}
+
+
+/* =====================================================
+   10. IMAGE INTERACTIONS
+   ===================================================== */
+
+.home-avatar,
+.contact-decoration-circle {
+    transition:
+        transform var(--animation-smooth),
+        box-shadow var(--animation-normal);
+}
+
+.home-avatar:hover,
+.contact-decoration-circle:hover {
+    transform: scale(1.04);
+}
+
+.project-image {
+    overflow: hidden;
+}
+
+.project-image img {
+    transition:
+        transform var(--animation-slow),
+        filter var(--animation-normal);
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.04);
+}
+
+
+/* =====================================================
+   11. LINKS AND TAGS
+   ===================================================== */
+
+a {
+    transition:
+        color var(--animation-fast),
+        opacity var(--animation-fast);
+}
+
+.skill-tag {
+    transition:
+        transform var(--animation-fast),
+        background-color var(--animation-fast),
+        border-color var(--animation-fast);
+}
+
+.skill-tag:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   12. CONTACT INTERACTIONS
+   ===================================================== */
+
+.contact-item a {
+    transition:
+        color var(--animation-fast),
+        padding-left var(--animation-fast);
+}
+
+.contact-item a:hover {
+    padding-left: 4px;
+}
+
+.contact-social-links a {
+    transition:
+        transform var(--animation-fast),
+        color var(--animation-fast);
+}
+
+.contact-social-links a:hover {
+    transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   13. LOADING AND EMPTY STATES
+   ===================================================== */
+
+@keyframes subtle-pulse {
+    0%,
+    100% {
+        opacity: 0.65;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.empty-state {
+    animation: fade-in 500ms ease both;
+}
+
+
+/* =====================================================
+   14. REDUCED MOTION ACCESSIBILITY
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+    }
+
+    .page-wrapper,
+    .page-section,
+    .page-header,
+    .home-hero,
+    .home-hero-content,
+    .home-hero-decoration,
+    .glass-card,
+    .stat-card,
+    .highlight-card,
+    .experience-card,
+    .education-card,
+    .project-card,
+    .skill-category {
+        animation: none !important;
+    }
+
+    body::before,
+    body::after,
+    .forest-fog,
+    .forest-light-rays,
+    .forest-particles,
+    .forest-tree {
+        animation: none !important;
+        will-change: auto !important;
+    }
+}
+
+
+/* =====================================================
+   EXPERIENCE PAGE — TIMELINE ANIMATIONS
+   ===================================================== */
+
+/* -----------------------------------------------------
+   1. TIMELINE LINE REVEAL
+----------------------------------------------------- */
+
+.experience-timeline::before {
+    transform: scaleY(0);
+    transform-origin: top;
+
+    animation: experience-line-reveal 1.4s ease-out forwards;
+}
+
+@keyframes experience-line-reveal {
+    to {
+        transform: scaleY(1);
+    }
+}
+
+/* -----------------------------------------------------
+   2. TIMELINE MARKER GLOW
+----------------------------------------------------- */
+
+.experience-marker {
+    animation: experience-marker-glow 3s ease-in-out infinite;
+}
+
+@keyframes experience-marker-glow {
+    0%,
+    100% {
+        box-shadow:
+            0 0 0 5px rgba(88, 129, 87, 0.12),
+            0 0 14px rgba(88, 129, 87, 0.35);
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 7px rgba(88, 129, 87, 0.08),
+            0 0 22px rgba(88, 129, 87, 0.65);
+    }
+}
+
+/* -----------------------------------------------------
+   3. EXPERIENCE CARD REVEAL
+----------------------------------------------------- */
+
+.experience-item {
+    opacity: 0;
+    transform: translateY(22px);
+
+    animation: experience-card-reveal 700ms ease forwards;
+}
+
+.experience-item:nth-child(1) {
+    animation-delay: 250ms;
+}
+
+.experience-item:nth-child(2) {
+    animation-delay: 450ms;
+}
+
+.experience-item:nth-child(3) {
+    animation-delay: 650ms;
+}
+
+.experience-item:nth-child(4) {
+    animation-delay: 850ms;
+}
+
+.experience-item:nth-child(5) {
+    animation-delay: 1050ms;
+}
+
+@keyframes experience-card-reveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* -----------------------------------------------------
+   4. REDUCED MOTION ACCESSIBILITY
+----------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .experience-timeline::before,
+    .experience-marker,
+    .experience-item {
+        animation: none;
+    }
+
+    .experience-timeline::before {
+        transform: scaleY(1);
+    }
+
+    .experience-item {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+
+/* =====================================================
+   EDUCATION PAGE — TIMELINE ANIMATIONS
+   ===================================================== */
+
+/* -----------------------------------------------------
+   1. TIMELINE LINE REVEAL
+----------------------------------------------------- */
+
+.education-timeline::before {
+    transform: scaleY(0);
+    transform-origin: top;
+
+    animation: education-line-reveal 1.6s ease-out forwards;
+}
+
+@keyframes education-line-reveal {
+    to {
+        transform: scaleY(1);
+    }
+}
+
+/* -----------------------------------------------------
+   2. TIMELINE MARKER GLOW
+----------------------------------------------------- */
+
+.education-marker {
+    animation: education-marker-glow 3s ease-in-out infinite;
+}
+
+@keyframes education-marker-glow {
+    0%,
+    100% {
+        box-shadow:
+            0 0 0 5px rgba(88, 129, 87, 0.12),
+            0 0 14px rgba(88, 129, 87, 0.35);
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 7px rgba(88, 129, 87, 0.08),
+            0 0 22px rgba(88, 129, 87, 0.65);
+    }
+}
+
+/* -----------------------------------------------------
+   3. EDUCATION CARD REVEAL
+----------------------------------------------------- */
+
+.education-item {
+    opacity: 0;
+    transform: translateY(22px);
+
+    animation: education-card-reveal 700ms ease forwards;
+}
+
+.education-item:nth-child(1) {
+    animation-delay: 250ms;
+}
+
+.education-item:nth-child(2) {
+    animation-delay: 450ms;
+}
+
+.education-item:nth-child(3) {
+    animation-delay: 650ms;
+}
+
+.education-item:nth-child(4) {
+    animation-delay: 850ms;
+}
+
+@keyframes education-card-reveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* -----------------------------------------------------
+   4. REDUCED MOTION ACCESSIBILITY
+----------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .education-timeline::before,
+    .education-marker,
+    .education-item {
+        animation: none;
+    }
+
+    .education-timeline::before {
+        transform: scaleY(1);
+    }
+
+    .education-item {
+        opacity: 1;
+        transform: none;
+    }
+}

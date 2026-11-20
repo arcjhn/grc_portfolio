@@ -1,0 +1,156 @@
+
+/* =========================================================
+   BOTANICAL DECORATION
+   GRC PORTFOLIO — INTERACTIVE BOTTOM GRASS
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   01. GLASS CARD GRASS CONTAINER
+--------------------------------------------------------- */
+
+.grass-card {
+    position: relative;
+    isolation: isolate;
+}
+
+/* Grass positioning */
+
+
+.card-grass {
+    position: absolute;
+
+    right: 12px;
+    bottom: 0;
+
+    width: 125px;
+    height: 36px;
+
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Wider grass specifically for the homepage hero */
+
+.home-dashboard-hero .card-grass {
+    width: 260px;
+    height: 52px;
+}
+
+
+
+
+/* ---------------------------------------------------------
+   02. SUBTLE GROUND SHADING
+--------------------------------------------------------- */
+
+.card-grass::before {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 10px;
+
+    background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(73, 119, 76, 0.12)
+    );
+
+    border-radius: 50%;
+}
+
+
+/* ---------------------------------------------------------
+   03. INDIVIDUAL GRASS BLADES
+--------------------------------------------------------- */
+
+/* Individual grass blades */
+
+.grass-blade {
+    position: absolute;
+
+    left: var(--blade-position);
+    bottom: 1px;
+
+    width: 3px;
+    height: var(--blade-height);
+
+    border-radius: 100% 0 100% 0;
+
+    background: linear-gradient(
+        180deg,
+        rgba(190, 211, 151, 0.98),
+        rgba(73, 119, 76, 0.9)
+    );
+
+    opacity: var(--blade-opacity, 0.85);
+
+    transform-origin: bottom center;
+    pointer-events: none;
+}
+
+/* Ensure homepage hero grass uses the swaying animation */
+
+.home-dashboard-hero .grass-blade {
+    animation: grass-blade-sway
+        var(--blade-duration, 3s)
+        ease-in-out
+        var(--blade-delay, 0s)
+        infinite
+        alternate;
+
+    will-change: transform;
+}
+
+/* ---------------------------------------------------------
+   04. KEEP CARD CONTENT ABOVE GRASS
+--------------------------------------------------------- */
+
+.grass-card > *:not(.card-grass) {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ---------------------------------------------------------
+   05. GRASS VISUAL VARIATIONS
+--------------------------------------------------------- */
+
+.grass-variation-1 .grass-blade:nth-child(3n) {
+    opacity: 0.55;
+}
+
+.grass-variation-2 .grass-blade:nth-child(4n) {
+    filter: brightness(1.15);
+}
+
+
+/* ---------------------------------------------------------
+   06. REDUCED MOTION ACCESSIBILITY
+--------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .card-grass,
+    .grass-blade {
+        transition: none;
+    }
+}
+
+/* ---------------------------------------------------------
+   07. MOBILE HERO GRASS POSITIONING
+--------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    .home-dashboard-hero .card-grass {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+
+}
